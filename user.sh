@@ -10,8 +10,8 @@ cd /app
 npm install
 cp user.systemd /etc/systemd/system/user.service
 systemctl daemon-reload
-systemctl enable catalogue
-systemctl start catalogue
+systemctl enable user
+systemctl start user
 cp mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-org-shell -y
 mongo --host mangodb.devops72bat.online </app/schema/user.js
