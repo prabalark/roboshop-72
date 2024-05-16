@@ -28,7 +28,7 @@ cp /home/centos/roboshop-72/mongo.repo /etc/yum.repos.d/mongo.repo
 echo -e "\e[31m >>>>>>> install mongodb client <<<<<<< \e[0m"
 dnf install mongodb-org-shell -y
 
-echo -e "\e[31m >>>>>>> load schema <<<<<<< \e[0m"
+echo -e "\e[31m >>>>>>> load schema <<<<<< \e[0m"
 mongo --host mangodb.devops72bat.online </app/schema/catalogue.js
 
 
