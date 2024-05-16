@@ -16,7 +16,7 @@ mvn clean package
 mv target/shipping-1.0.jar shipping.jar
 
 echo -e " \e[31m >>>>> install systemd <<<<< \e[0m"
-cp shipping.systemd /etc/systemd/system/shipping.service
+cp /home/centos/roboshop-72/shipping.systemd /etc/systemd/system/shipping.service
 systemctl daemon-reload
 systemctl enable shipping
 systemctl restart shipping
