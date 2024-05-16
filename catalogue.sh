@@ -12,6 +12,8 @@ cp catalogue.systemd /etc/systemd/system/catalogue.service
 systemctl daemon-reload
 systemctl enable catalogue
 systemctl start catalogue
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp /home/centos/roboshop-72/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-org-shell -y
 mongo --host mangodb.devops72bat.online </app/schema/catalogue.js
+
+
