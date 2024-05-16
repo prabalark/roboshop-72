@@ -3,6 +3,7 @@ dnf install maven -y
 
 echo -e " \e[31m >>>>> downlaod maven <<<<< \e[0m"
 useradd roboshop
+rm -rf /add
 mkdir /app
 curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip
 
