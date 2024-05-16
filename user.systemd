@@ -4,7 +4,7 @@ Description = User Service
 User=roboshop
 Environment=MONGO=true
 Environment=REDIS_HOST=redis.devops72bat.online
-Environment=MONGO_URL="mongodb://mangodb.devops72bat.online:27017/users"
+Environment=MONGO_URL="mongodb://mongodb.devops72bat.online:27017/users"
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=user
 
