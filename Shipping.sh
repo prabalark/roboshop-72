@@ -1,14 +1,16 @@
 echo -e " \e[31m >>>>> install maven <<<<< \e[0m"
 dnf install maven -y
 
-echo -e " \e[31m >>>>> downlaod maven <<<<< \e[0m"
+echo -e "\e[31m >>>>>>>create /app <<<<<< \e[0m"
 useradd roboshop
-rm -rf /add
+rm -rf /app # bcz re-run of code some time through error
 mkdir /app
+
+echo -e " \e[31m >>>>> downlaod shipping <<<<< \e[0m"
 curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip
+cd /app
 
 echo -e " \e[31m >>>>> unzip shipping <<<<< \e[0m"
-cd /app
 unzip /tmp/shipping.zip
 
 echo -e " \e[31m >>>>> install library <<<<< \e[0m"
