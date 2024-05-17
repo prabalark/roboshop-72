@@ -1,8 +1,10 @@
 echo -e " \e[32m >>>>> install golang <<<<< \e[0m "
 dnf install golang -y
 
-echo -e " \e[32m >>>>> downlaod app <<<<< \e[0m "
+echo -e " \e[32m >>>>> useradd app <<<<< \e[0m "
 useradd roboshop
+
+echo -e " \e[32m >>>>> downlaod app <<<<< \e[0m "
 mkdir /app
 curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch.zip
 
@@ -17,7 +19,9 @@ go get
 go build
 
 echo -e " \e[32m >>>>> install systemd <<<<< \e[0m "
-cp dispatch.systemd  /etc/systemd/system/dispatch.service
+cp /home/centos/roboshop-72/dispatch.systemd  /etc/systemd/system/dispatch.service
+
+echo -e " \e[32m >>>>> start  dispatch <<<<< \e[0m "
 systemctl daemon-reload
 systemctl enable dispatch
 systemctl restart dispatch
