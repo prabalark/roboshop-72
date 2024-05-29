@@ -1,10 +1,14 @@
+script=$(realpath "$0")
+script_path=$(dirname "$script")
+source ${script_path}/common.sh
+
 echo -e "\e[31m >>>>>>> install nodejs <<<<<<< \e[0m"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
 dnf install nodejs -y
 
 echo -e "\e[31m >>>>>>>create /app <<<<<< \e[0m"
-useradd roboshop
+useradd ${username}
 rm -rf /app # bcz re-run of code some time through error
 mkdir /app
 
@@ -20,7 +24,7 @@ cd /app
 npm install
 
 echo -e "\e[32m >>>>>>> install systemd<<<<<<< \e[0m"
-cp /home/centos/roboshop-72/user.systemd  /etc/systemd/system/user.service
+cp $script_path/user.systemd  /etc/systemd/system/user.service
 systemctl daemon-reload
 systemctl enable user
 systemctl restart user
