@@ -5,17 +5,17 @@
  c="rk"
 
  #echo x is 10
- echo x is $a
+ echo a is $a
 
  #echo x is rk
- echo x is $b
+ echo b is $b
 
  #echo x is rk
- echo x is "$b1"
+ echo b1 is "$b1"
 
  #echo x is rk
- echo x is ${c}
+ echo c is ${c}
 
  #echo x is rk
- echo x is ${d}
+ echo d is ${d}
 
