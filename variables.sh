@@ -2,7 +2,7 @@
  b =rk
  b1=rk
  c='rk'
- c="rk"
+ d="rk"
 
  #echo x is 10
  echo a is "$a"
