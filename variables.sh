@@ -3,6 +3,8 @@
  b1=rk
  c='rk'
  d="rk"
+ e=2024-05-29
+ f='2024-05-29'
 
  #echo x is 10
  echo a is "$a"
@@ -14,4 +16,7 @@
  echo c is ${c}
  #echo x is rk
  echo d is ${d}
-
+ #echo x is rk
+ echo e is ${e}
+ #echo x is rk
+ echo f is ${f}
