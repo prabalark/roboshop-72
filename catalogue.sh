@@ -1,5 +1,12 @@
 source common.sh
 
+dirname $0
+
+exit
+
+  ;;
+esac
+
 echo -e "\e[31m >>>>>>> install nodejs <<<<<<< \e[0m"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
