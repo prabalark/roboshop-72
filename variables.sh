@@ -1,6 +1,6 @@
  a =10
  b =rk
- c='rk'
+ d='rk'
 
  #echo x is 10
  echo x is $a
@@ -9,4 +9,4 @@
  echo x is $b
 
  #echo x is rk
- echo x is ${c}
+ echo x is ${d}
