@@ -1,4 +1,4 @@
-username=roboshop
+source common.sh
 
 echo -e "\e[31m >>>>>>> install nodejs <<<<<<< \e[0m"
 dnf module disable nodejs -y
