@@ -1,10 +1,12 @@
+username=roboshop
+
 echo -e "\e[31m >>>>>>> install nodejs <<<<<<< \e[0m"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
 dnf install nodejs -y
 
 echo -e "\e[31m >>>>>>>create /app <<<<<< \e[0m"
-useradd roboshop
+useradd ${username}
 rm -rf /app # bcz re-run of code some time through error
 mkdir /app
 
