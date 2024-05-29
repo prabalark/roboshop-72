@@ -38,3 +38,6 @@ echo argument $*
 echo argument $#
 echo argument $?
 
+$0
+dirname
+dirname $0
