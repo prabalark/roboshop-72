@@ -1,5 +1,6 @@
  a =10
  a1 ='10'
+ a2 ='10'
  b =rk
  b1=rk
  c='rk'
@@ -11,6 +12,8 @@
  echo a is "$a"
   #echo x is 10
   echo a1 is "$a1"
+ #echo x is 10
+echo a2 = "$a2"
  #echo x is rk
  echo b is $b
  #echo x is rk
