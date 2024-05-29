@@ -7,7 +7,7 @@
  d="rk"
  e=2024-05-29
  f='2024-05-29'
- f1 = $(date +%F)
+ f1= $(date +%F)
 
  #echo x is 10
  echo a is $a
