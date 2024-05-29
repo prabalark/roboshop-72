@@ -31,5 +31,10 @@ echo a2 = $a2
  echo f1 is ${f1}
 
 
-
+echo argument $0
+echo argument $1
+echo argument $2
+echo argument $*
+echo argument $#
+echo argument $?
 
