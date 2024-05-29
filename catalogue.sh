@@ -1,8 +1,6 @@
-source common.sh
-
-dirname $0
-
-exit
+script=$(realpath "$0")
+scritt_path=$(dirname "$script")
+source  $script_path/common.sh
 
 echo -e "\e[31m >>>>>>> install nodejs <<<<<<< \e[0m"
 dnf module disable nodejs -y
@@ -26,7 +24,7 @@ cd /app
 npm install
 
 echo -e "\e[32m >>>>>>> install systemd<<<<<<< \e[0m"
-cp /home/centos/roboshop-72/catalogue.systemd  /etc/systemd/system/catalogue.service
+cp $script_path/catalogue.systemd  /etc/systemd/system/catalogue.service
 systemctl daemon-reload
 systemctl enable catalogue
 systemctl restart catalogue
