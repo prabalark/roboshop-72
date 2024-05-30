@@ -1,6 +1,7 @@
 script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
+rabbitm1_lg_password=$1
 
 echo -e "\e[32m  >>>>>>>>>> install python <<<<<<<<< \e[0m"
 dnf install python36 gcc python3-devel -y
