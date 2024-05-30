@@ -24,6 +24,7 @@ cd /app
 pip3.6 install -r requirements.txt
 
 echo -e "\e[32m  >>>>>>>>>> install systemd <<<<<<<< \e[0m"
+sed -i -e "s|rabbitm1_lg_password|${rabbitm1_lg_password}|" ${script_path}/payment.systemd
 cp ${script_path}/payment.systemd  /etc/systemd/system/payment.service
 
 echo -e "\e[32m  >>>>>>>>>> start payment systemd <<<<<<<< \e[0m"
