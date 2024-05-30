@@ -14,5 +14,6 @@ dnf install mysql-community-server -y
 systemctl enable mysqld
 systemctl restart mysqld
 
+#RoboShop@1
 echo -e "\e[32m >>>>>>>user creation mysql <<<<<<<<< \e[0m"
 mysql_secure_installation --set-root-pass ${mysqlpassword}
