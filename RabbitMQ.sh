@@ -11,6 +11,7 @@ echo -e "\e[32m >>>>> install rabbitmq <<<<< \e[0m"
 dnf install rabbitmq-server -y
 
 echo -e "\e[32m >>>>> start rabbitmq <<<<< \e[0m"
+systemctl enable rabbitmq-server
 systemctl restart rabbitmq-server
 
 #roboshop123
