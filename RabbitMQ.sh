@@ -14,6 +14,7 @@ echo -e "\e[32m >>>>> start rabbitmq <<<<< \e[0m"
 systemctl restart rabbitmq-server
 
 #roboshop123
+
 echo -e "\e[32m >>>>> adduser rabbitmq <<<<< \e[0m"
 rabbitmqctl add_user roboshop ${rabbitm1_lg_password}
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
