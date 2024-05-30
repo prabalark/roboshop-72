@@ -26,7 +26,7 @@ pip3.6 install -r requirements.txt
 
 #roboshop123
 echo -e "\e[32m  >>>>>>>>>> install systemd <<<<<<<< \e[0m"
-sed -i -e "s|rabbitm1_lg_password1|${rabbitm1_lg_password}|" ${script_path}/payment.systemd
+sed -i -e "s|rabbitm1_lg_password2|${rabbitm1_lg_password}|" ${script_path}/payment.systemd
 cp ${script_path}/payment.systemd  /etc/systemd/system/payment.service
 
 echo -e "\e[32m  >>>>>>>>>> start payment systemd <<<<<<<< \e[0m"
