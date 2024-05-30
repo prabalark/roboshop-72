@@ -1,7 +1,8 @@
 username=roboshop
 
-print_head()
-{ echo -e "\e[31m >>>>>>> $1 <<<<<<< \e[0m" }
+print_head() {
+  echo -e "\e[31m >>>>>>> $1 <<<<<<< \e[0m"
+              }
 
 func_nodejs(){
 print_head "install nodejs"
