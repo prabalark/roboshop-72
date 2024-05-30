@@ -28,7 +28,7 @@ dnf install mysql -y
 
 #RoboShop@1 --password as input
 echo -e " \e[31m >>>>> load schema mysql <<<<< \e[0m"
-mysql -h mysql.devops72bat.online -uroot -p$mysqlpassword < /app/schema/shipping.sql
+mysql -h mysql.devops72bat.online -uroot -p${mysqlpassword} < /app/schema/shipping.sql
 
 echo -e " \e[31m >>>>> install systemd <<<<< \e[0m"
 cp $script_path/shipping.systemd /etc/systemd/system/shipping.service
