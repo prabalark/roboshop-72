@@ -2,6 +2,7 @@ script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
+func_nodejs(){
 echo -e "\e[31m >>>>>>> install nodejs <<<<<<< \e[0m"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
@@ -28,6 +29,8 @@ cp $script_path/catalogue.systemd  /etc/systemd/system/catalogue.service
 systemctl daemon-reload
 systemctl enable catalogue
 systemctl restart catalogue
+}
+ func_nodejs
 
 echo -e "\e[32m >>>>>>> copy mongodb repo <<<<<<< \e[0m"
 cp /home/centos/roboshop-72/mongo.repo /etc/yum.repos.d/mongo.repo
