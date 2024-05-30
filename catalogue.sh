@@ -2,6 +2,8 @@ script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
+component=catalogue
+
 func_nodejs(){
 echo -e "\e[31m >>>>>>> install nodejs <<<<<<< \e[0m"
 dnf module disable nodejs -y
@@ -14,18 +16,18 @@ rm -rf /app # bcz re-run of code some time through error
 mkdir /app
 
 echo -e "\e[31m >>>>>>>downlaod catalogue<<<<<<< \e[0m"
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
+curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
 cd /app
 
 echo -e "\e[31m >>>>>>>unzip catalogue<<<<<<< \e[0m"
-unzip /tmp/catalogue.zip
+unzip /tmp/${component}.zip
 
 echo -e "\e[32m >>>>>>>library install<<<<<<< \e[0m"
 cd /app
 npm install
 
 echo -e "\e[32m >>>>>>> install systemd<<<<<<< \e[0m"
-cp $script_path/catalogue.systemd  /etc/systemd/system/catalogue.service
+cp $script_path/${component}.systemd  /etc/systemd/system/catalogue.service
 systemctl daemon-reload
 systemctl enable catalogue
 systemctl restart catalogue
@@ -33,12 +35,12 @@ systemctl restart catalogue
  func_nodejs
 
 echo -e "\e[32m >>>>>>> copy mongodb repo <<<<<<< \e[0m"
-cp /home/centos/roboshop-72/mongo.repo /etc/yum.repos.d/mongo.repo
+cp $script_path/mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[32m >>>>>>> install mongodb client <<<<<<< \e[0m"
 dnf install mongodb-org-shell -y
 
 echo -e "\e[32m >>>>>>> load schema <<<<<< \e[0m"
-mongo --host mongodb.devops72bat.online </app/schema/catalogue.js
+mongo --host mongodb.devops72bat.online </app/schema/${component}.js
 
 
