@@ -3,7 +3,6 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
 component=user
-
 func_nodejs
 
 echo -e "\e[32m >>>>>>> copy mongodb repo <<<<<<< \e[0m"
