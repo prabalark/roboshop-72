@@ -7,7 +7,7 @@ component=user
 func_nodejs
 
 echo -e "\e[32m >>>>>>> copy mongodb repo <<<<<<< \e[0m"
-cp /home/centos/roboshop-72/mongo.repo /etc/yum.repos.d/mongo.repo
+cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[32m >>>>>>> install mongodb client <<<<<<< \e[0m"
 dnf install mongodb-org-shell -y
