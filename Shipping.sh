@@ -3,10 +3,10 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 mysqlpassword=$1
 
- if [-z "${mysqlpassword}" ]; then
+if [-z "${mysqlpassword}" ]; then
     echo password is not given
     exit
-  fi
+fi
 
 component_shp=shipping
 func_shipping(){
