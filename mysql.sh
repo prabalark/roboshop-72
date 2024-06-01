@@ -1,10 +1,11 @@
 script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
+mysqlpassword=$1
 
- if [ -z "${mysqlpassword}" ]; then
+ if [-z "${mysqlpassword}" ]; then
    echo password is not given
-    exit
+   exit
     fi
 
 echo -e "\e[32m >>>>>>>disable mysql module<<<<<<<<< \e[0m"
