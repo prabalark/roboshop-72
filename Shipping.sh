@@ -3,7 +3,7 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 mysqlpassword=$1
 
-component_shp = shipping
+component_shp=shipping
 func_shipping(){
 echo -e " \e[31m >>>>> install maven <<<<< \e[0m"
 dnf install maven -y
