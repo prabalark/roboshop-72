@@ -3,6 +3,11 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 rabbitm1_lg_password=$1
 
+if [ -z "${rabbitm1_lg_password}" ]; then
+    echo password is not given
+    exit
+fi
+
 echo -e "\e[32m >>>>> download rabbitmq <<<<< \e[0m"
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
@@ -15,7 +20,6 @@ systemctl enable rabbitmq-server
 systemctl restart rabbitmq-server
 
 #roboshop123
-
 echo -e "\e[32m >>>>> adduser rabbitmq <<<<< \e[0m"
 rabbitmqctl add_user roboshop ${rabbitm1_lg_password}
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
