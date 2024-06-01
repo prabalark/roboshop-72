@@ -4,7 +4,6 @@ source ${script_path}/common.sh
 
  if [ -z ${mysqlpassword} ] ; then
    echo mysqlpassword is not given
-
     fi
 
 echo -e "\e[32m >>>>>>>disable mysql module<<<<<<<<< \e[0m"
