@@ -4,9 +4,9 @@ source ${script_path}/common.sh
 mysqlpassword=$1
 
  if [-z "${mysqlpassword}" ]; then
-   echo password is not given
-   exit
-    fi
+    echo password is not given
+    exit
+  fi
 
 echo -e "\e[32m >>>>>>>disable mysql module<<<<<<<<< \e[0m"
 dnf module disable mysql -y
