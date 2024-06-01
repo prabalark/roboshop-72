@@ -1,6 +1,5 @@
 username=roboshop
 
-
 schema_laod_nodejs(){
   if [ "$schma_check" == "mongodb" ]; then
 echo -e "\e[32m >>>>>>> copy mongodb repo <<<<<<< \e[0m"
