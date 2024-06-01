@@ -15,11 +15,11 @@ useradd ${username}
 rm -rf /app # bcz re-run of code some time through error
 mkdir /app
 
-print_head "downlaod catalogue"
+print_head "downlaod ${component}"
 curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
 cd /app
 
-print_head "unzip catalogue"
+print_head "unzip ${component}"
 unzip /tmp/${component}.zip
 
 print_head "library install"
