@@ -1,7 +1,11 @@
 script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
-mysqlpassword=$1
+
+ if [ -z ${mysqlpassword} ] ; then
+   echo mysqlpassword is not given
+     exit
+    fi
 
 echo -e "\e[32m >>>>>>>disable mysql module<<<<<<<<< \e[0m"
 dnf module disable mysql -y
