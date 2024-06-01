@@ -2,6 +2,7 @@ username=roboshop
 
 
 schema_laod_nodejs(){
+  if [ "$schma_check" == "mongodb" ]; then
 echo -e "\e[32m >>>>>>> copy mongodb repo <<<<<<< \e[0m"
 cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 
@@ -10,6 +11,7 @@ dnf install mongodb-org-shell -y
 
 echo -e "\e[32m >>>>>>> load schema <<<<<< \e[0m"
 mongo --host mongodb.devops72bat.online </app/schema/${component}.js
+fi
 }
 
 print_head() {
