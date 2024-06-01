@@ -6,7 +6,7 @@ mysqlpassword=$1
  if [-z "${mysqlpassword}" ]; then
     echo password is not given
     exit
-  fi
+ fi
 
 echo -e "\e[32m >>>>>>>disable mysql module<<<<<<<<< \e[0m"
 dnf module disable mysql -y
