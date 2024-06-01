@@ -1,7 +1,7 @@
 username=roboshop
 
 schema_laod_nodejs(){
-  if [ "$schma_check" == "mongodb" ]; then
+  if [ "$schma_check" == "mongodb" ]; then  #double quotes compuslory
 echo -e "\e[32m >>>>>>> copy mongodb repo <<<<<<< \e[0m"
 cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 
