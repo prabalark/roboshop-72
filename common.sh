@@ -16,7 +16,7 @@ rm -rf /app # bcz re-run of code some time through error
 mkdir /app
 
 print_head "downlaod catalogue"
-curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
+curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
 cd /app
 
 print_head "unzip catalogue"
