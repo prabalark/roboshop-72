@@ -42,3 +42,5 @@ systemctl daemon-reload
 systemctl enable ${component_pay}
 systemctl restart ${component_pay}
 }
+
+func_payment
