@@ -29,6 +29,6 @@ npm install
 print_head "install systemd"
 cp $script_path/${component}.systemd  /etc/systemd/system/${component}.service
 systemctl daemon-reload
-systemctl enable catalogue
-systemctl restart catalogue
+systemctl enable ${component}
+systemctl restart ${component}
 }
