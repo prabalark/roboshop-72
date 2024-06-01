@@ -17,9 +17,9 @@ mkdir /app
 
 print_head "downlaod ${component}"
 curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
-cd /app
 
 print_head "unzip ${component}"
+cd /app
 unzip /tmp/${component}.zip
 
 print_head "library install"
