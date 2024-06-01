@@ -3,7 +3,7 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
  if [ -z "${mysqlpassword}" ]; then
-   echo mysqlpassword is not given
+   echo password is not given
     exit
     fi
 
