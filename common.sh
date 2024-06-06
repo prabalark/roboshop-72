@@ -1,4 +1,5 @@
 username=roboshop
+log_path=/tmp/roboshop.log
 
 schema_laod_nodejs(){
   if [ "$schma_check" == "mongodb" ]; then  #double quotes compuslory
@@ -27,41 +28,41 @@ print_head() {
 
 func_nodejs(){
 print_head "install nodejs"
-dnf module disable nodejs -y &>>/tmp/roboshop.log
-dnf module enable nodejs:18 -y &>>/tmp/roboshop.log
-dnf install nodejs -y &>/tmp/roboshop.log
+dnf module disable nodejs -y &>>${log_path}
+dnf module enable nodejs:18 -y &>>${log_path}
+dnf install nodejs -y &>>${log_path}
 func_exit $?
 
 print_head "create /app"
-useradd ${username} &>>/tmp/roboshop.log
+useradd ${username} &>>${log_path}
 func_exit $?
 
 rm -rf /app # bcz re-run of code some time through error
-mkdir /app
+mkdir /app &>>${log_path}
 func_exit $?
 
 print_head "downlaod ${component}"
-curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
+curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log_path}
 func_exit $?
 print_head "unzip ${component}"
-cd /app
-unzip /tmp/${component}.zip
+cd /app &>>${log_path}
+unzip /tmp/${component}.zip &>>${log_path}
 func_exit $?
 
 print_head "library install"
-cd /app
-npm install
+cd /app &>>${log_path}
+npm install &>>${log_path}
 func_exit $?
 
 print_head "install systemd"
-cp $script_path/${component}.systemd  /etc/systemd/system/${component}.service
+cp $script_path/${component}.systemd  /etc/systemd/system/${component}.service &>>${log_path}
 func_exit $?
 
-systemctl daemon-reload
-systemctl enable ${component}
-systemctl restart ${component}
+systemctl daemon-reload &>>${log_path}
+systemctl enable ${component} &>>${log_path}
+systemctl restart ${component} &>>${log_path}
 func_exit $?
 
-schema_laod_nodejs
+schema_laod_nodejs &>>${log_path}
 func_exit $?
 }
