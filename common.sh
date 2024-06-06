@@ -22,7 +22,7 @@ print_head "install nodejs"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
 dnf install nodejs -y
-if [ $? -eq 0 ] then
+if [ $? -eq 0 ]; then
     success
 else
     failure
