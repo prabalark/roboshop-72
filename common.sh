@@ -22,11 +22,10 @@ print_head "install nodejs"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
 dnf install nodejs -y
-if [ $? -eq 0 ];
-then
-    success
-else
-    failure
+if [ $? -eq 0 ]; then
+   echo -e "\e[32m >>>>>>>>>> 'success' <<<<<<<<<<<< \e[0m"
+   else
+   echo -e "\e[32m >>>>>>>>>> 'failure' <<<<<<<<<<<< \e[0m"
 fi
 
 print_head "create /app"
