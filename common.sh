@@ -19,6 +19,8 @@ func_exit(){
      echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
   else
      echo -e "\e[31m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
+     exit
+     echo -e "\e[31m >>>>>>>>>> refer the log file '/tmp/roboshop.log' <<<<<<<<<<<< \e[0m"
   fi
 }
 
