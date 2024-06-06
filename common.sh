@@ -34,7 +34,10 @@ dnf install nodejs -y &>>${log_path}
 func_exit $?
 
 print_head "create /app"
-useradd ${username} &>>${log_path}
+id ${username} &>>${log_path}
+if [ $? -ne 0 ]; then
+ useradd ${username} &>>${log_path}
+fi
 func_exit $?
 
 rm -rf /app # bcz re-run of code some time through error
