@@ -27,13 +27,13 @@ print_head() {
 
 func_nodejs(){
 print_head "install nodejs"
-dnf module disable nodejs -y &>/tmp/roboshop.log
-dnf module enable nodejs:18 -y &>/tmp/roboshop.log
+dnf module disable nodejs -y &>>/tmp/roboshop.log
+dnf module enable nodejs:18 -y &>>/tmp/roboshop.log
 dnf install nodejs -y &>/tmp/roboshop.log
 func_exit $?
 
 print_head "create /app"
-useradd ${username} &>/tmp/roboshop.log
+useradd ${username} &>>/tmp/roboshop.log
 func_exit $?
 
 rm -rf /app # bcz re-run of code some time through error
