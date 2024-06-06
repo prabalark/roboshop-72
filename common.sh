@@ -24,7 +24,7 @@ dnf module enable nodejs:18 -y
 dnf install nodejs -y
 if [ $? -eq 0 ]; then
    echo -e "\e[32m >>>>>>>>>> 'success' <<<<<<<<<<<< \e[0m"
-   else
+else
    echo -e "\e[32m >>>>>>>>>> 'failure' <<<<<<<<<<<< \e[0m"
 fi
 
@@ -34,7 +34,7 @@ rm -rf /app # bcz re-run of code some time through error
 mkdir /app
 if [ $? -eq 0 ]; then
    echo -e "\e[32m >>>>>>>>>> 'success' <<<<<<<<<<<< \e[0m"
-   else
+else
    echo -e "\e[32m >>>>>>>>>> 'failure' <<<<<<<<<<<< \e[0m"
 fi
 print_head "downlaod ${component}"
