@@ -31,6 +31,12 @@ fi
 
 print_head "create /app"
 useradd ${username}
+if [ $? -eq 0 ]; then
+   echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
+else
+   echo -e "\e[31m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
+  exit1
+fi
 rm -rf /app # bcz re-run of code some time through error
 mkdir /app
 if [ $? -eq 0 ]; then
