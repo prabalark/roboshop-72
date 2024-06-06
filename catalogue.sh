@@ -3,7 +3,7 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
 component=catalogue
-schma_check = mongodb
+schma_check=mongodb
  func_nodejs
 
 
