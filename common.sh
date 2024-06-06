@@ -22,6 +22,11 @@ print_head "install nodejs"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
 dnf install nodejs -y
+if [ $? -eq 0 ] then
+    success
+else
+    failure
+fi
 
 print_head "create /app"
 useradd ${username}
