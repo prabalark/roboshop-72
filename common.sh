@@ -22,23 +22,23 @@ print_head "install nodejs"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
 dnf install nodejs -y
-if [ $? -eq 0 ]; then
+  if [ $? -eq 0 ]; then
    echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
-else
+  else
    echo -e "\e[32m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
    exit1
-fi
+  fi
 
 print_head "create /app"
 useradd ${username}
 rm -rf /app # bcz re-run of code some time through error
 mkdir /app
-if [ $? -eq 0 ]; then
+  if [ $? -eq 0 ]; then
    echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
-else
+  else
    echo -e "\e[32m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
    exit1
-fi
+  fi
 print_head "downlaod ${component}"
 curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
 
