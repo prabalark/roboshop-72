@@ -1,5 +1,6 @@
 username=roboshop
 log_path=/tmp/roboshop.log
+rm -f ${log_path}
 
 schema_laod_nodejs(){
   if [ "$schma_check" == "mongodb" ]; then  #double quotes compuslory
