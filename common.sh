@@ -13,6 +13,15 @@ mongo --host mongodb.devops72bat.online </app/schema/${component}.js
 fi
 }
 
+func_exit(){
+  if [ $1 -eq 0 ]; then
+     echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
+  else
+     echo -e "\e[31m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
+    exit
+  fi
+}
+
 print_head() {
   echo -e "\e[31m >>>>>>> $1 <<<<<<< \e[0m"
               }
@@ -22,44 +31,38 @@ print_head "install nodejs"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
 dnf install nodejs -y
-if [ $? -eq 0 ]; then
-   echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
-else
-   echo -e "\e[31m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
-  exit
-fi
+func_exit $?
 
 print_head "create /app"
 useradd ${username}
-if [ $? -eq 0 ]; then
-   echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
-else
-   echo -e "\e[31m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
-  exit
-fi
+func_exit $?
+
 rm -rf /app # bcz re-run of code some time through error
 mkdir /app
-if [ $? -eq 0 ]; then
-   echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
-else
-   echo -e "\e[31m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
-   exit
-fi
+func_exit $?
+
 print_head "downlaod ${component}"
 curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
-
+func_exit $?
 print_head "unzip ${component}"
 cd /app
 unzip /tmp/${component}.zip
+func_exit $?
 
 print_head "library install"
 cd /app
 npm install
+func_exit $?
 
 print_head "install systemd"
 cp $script_path/${component}.systemd  /etc/systemd/system/${component}.service
+func_exit $?
+
 systemctl daemon-reload
 systemctl enable ${component}
 systemctl restart ${component}
+func_exit $?
+
 schema_laod_nodejs
+func_exit $?
 }
