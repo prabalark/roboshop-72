@@ -26,6 +26,7 @@ if [ $? -eq 0 ]; then
    echo -e "\e[32m >>>>>>>>>> 'success' <<<<<<<<<<<< \e[0m"
 else
    echo -e "\e[32m >>>>>>>>>> 'failure' <<<<<<<<<<<< \e[0m"
+   exit1
 fi
 
 print_head "create /app"
@@ -36,6 +37,7 @@ if [ $? -eq 0 ]; then
    echo -e "\e[32m >>>>>>>>>> 'success' <<<<<<<<<<<< \e[0m"
 else
    echo -e "\e[32m >>>>>>>>>> 'failure' <<<<<<<<<<<< \e[0m"
+   exit1
 fi
 print_head "downlaod ${component}"
 curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
