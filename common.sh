@@ -27,8 +27,8 @@ print_head() {
 
 func_nodejs(){
 print_head "install nodejs"
-dnf module disable nodejs -y
-dnf module enable nodejs:18 -y
+dnf module disable nodejs -y  >/tmp/roboshop.log
+dnf module enable nodejs:18 -y >/tmp/roboshop.log
 dnf install nodejs -y >/tmp/roboshop.log
 func_exit $?
 
