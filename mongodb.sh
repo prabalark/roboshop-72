@@ -1,3 +1,5 @@
+source common.sh
+
 echo  -e "\e[32m >>>>>>>>>Copy-repo<<<<<<<<<<<< \e [0m"
 cp /home/centos/roboshop-72/mongo.repo /etc/yum.repos.d/mongo.repo &>>${log_path}
 func_exit $?
