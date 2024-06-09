@@ -1,3 +1,5 @@
+source common.sh
+
 echo -e "\e[31m >>>>>>> install nginx <<<<<<< \e[0m"
 dnf install nginx -y &>>${log_path}
 func_exit $?
