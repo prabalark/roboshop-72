@@ -4,6 +4,7 @@ echo -e "\e[31m >>>>>>> install nginx <<<<<<< \e[0m"
 dnf install nginx -y &>>${log_path}
 func_exit $?
 systemctl enable nginx &>>${log_path}
+func_exit $?
 systemctl start nginx &>>${log_path}
 func_exit $?
 
@@ -21,5 +22,6 @@ echo -e "\e[31m >>>>>>> reverse-proxy<<<<<<< \e[0m"
 cp /home/centos/roboshop-72/reverse-proxy-ver-1  /etc/nginx/default.d/roboshop.conf &>>${log_path}
 func_exit $?
 systemctl enable nginx &>>${log_path}
+func_exit $?
 systemctl restart nginx &>>${log_path}
 func_exit $?
