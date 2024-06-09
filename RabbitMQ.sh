@@ -8,21 +8,32 @@ if [ -z "${rabbitm1_lg_password}" ]; then
     exit
 fi
 
+func_rabbitmq() {
 echo -e "\e[32m >>>>> download rabbitmq <<<<< \e[0m"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>>${log_path}
+func_exit $?
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>>${log_path}
+func_exit $?
 
 echo -e "\e[32m >>>>> install rabbitmq <<<<< \e[0m"
-dnf install rabbitmq-server -y
+dnf install rabbitmq-server -y &>>${log_path}
+func_exit $?
 
 echo -e "\e[32m >>>>> start rabbitmq <<<<< \e[0m"
-systemctl enable rabbitmq-server
-systemctl restart rabbitmq-server
+systemctl enable rabbitmq-server &>>${log_path}
+systemctl restart rabbitmq-server &>>${log_path}
+func_exit $?
 
 #roboshop123
 echo -e "\e[32m >>>>> adduser rabbitmq <<<<< \e[0m"
-rabbitmqctl add_user roboshop ${rabbitm1_lg_password}
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+rabbitmqctl add_user roboshop ${rabbitm1_lg_password} &>>${log_path}
+func_exit $?
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>${log_path}
+func_exit $?
+
+ }
+
+func_rabbitmq
 
 #print_head "Add Application User"
  # #rabbitmqctl list_users | grep roboshop &>>${LOG}
