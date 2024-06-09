@@ -8,15 +8,16 @@ mysqlpassword=$1
     exit
  fi
 
-echo -e "\e[32m >>>>>>>disable mysql module<<<<<<<<< \e[0m"
+func_mysql() {
+print_head "disable mysql module" 
 dnf module disable mysql -y &>>${log_path}
 func_exit $?
 
-echo -e "\e[32m >>>>>>>cp mysql repo<<<<<<<<< \e[0m"
+print_head  "cp mysql repo<"
 cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo &>>${log_path}
 func_exit $?
 
-echo -e "\e[32m >>>>>>>install mysql <<<<<<<<< \e[0m"
+print_head  "install mysql"  
 dnf install mysql-community-server -y &>>${log_path}
 func_exit $?
 systemctl enable mysqld &>>${log_path}
@@ -25,6 +26,9 @@ systemctl restart mysqld &>>${log_path}
 func_exit $?
 
 #RoboShop@1
-echo -e "\e[32m >>>>>>>user creation mysql <<<<<<<<< \e[0m"
+print_head  "user creation mysql"  
 mysql_secure_installation --set-root-pass ${mysqlpassword} &>>${log_path}
 func_exit $?
+}
+
+func_mysql
