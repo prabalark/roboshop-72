@@ -1,3 +1,5 @@
+source common.sh
+
 echo -e "\e[32m >>>>>>>>>install repo<<<<<<<<<< \e[0m"
 dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>${log_path}
 func_exit $?
