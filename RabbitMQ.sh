@@ -9,23 +9,23 @@ if [ -z "${rabbitm1_lg_password}" ]; then
 fi
 
 func_rabbitmq() {
-echo -e "\e[32m >>>>> download rabbitmq <<<<< \e[0m"
+print_head "download rabbitmq" 
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>>${log_path}
 func_exit $?
 curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>>${log_path}
 func_exit $?
 
-echo -e "\e[32m >>>>> install rabbitmq <<<<< \e[0m"
+print_head "install rabbitmq" 
 dnf install rabbitmq-server -y &>>${log_path}
 func_exit $?
 
-echo -e "\e[32m >>>>> start rabbitmq <<<<< \e[0m"
+print_head "start rabbitmq" 
 systemctl enable rabbitmq-server &>>${log_path}
 systemctl restart rabbitmq-server &>>${log_path}
 func_exit $?
 
 #roboshop123
-echo -e "\e[32m >>>>> adduser rabbitmq <<<<< \e[0m"
+print_head "adduser rabbitmq" 
 rabbitmqctl add_user roboshop ${rabbitm1_lg_password} &>>${log_path}
 func_exit $?
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>${log_path}
