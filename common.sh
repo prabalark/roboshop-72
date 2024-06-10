@@ -11,7 +11,7 @@ echo -e "\e[32m >>>>>>> install mongodb client <<<<<<< \e[0m"
 dnf install mongodb-org-shell -y
 
 echo -e "\e[32m >>>>>>> load schema <<<<<< \e[0m"
-mongo --host ${component}.devops72bat.online </app/schema/${component}.js
+mongo --host mongodb.devops72bat.online </app/schema/${component}.js
 fi
 }
 
