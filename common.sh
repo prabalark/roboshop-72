@@ -31,9 +31,11 @@ print_head() {
               }
 
 func_nodejs(){
+  # dnf module list -> to see all
 print_head "install nodejs"
 dnf module disable nodejs -y &>>${log_path}
 dnf module enable nodejs:18 -y &>>${log_path}
+
 dnf install nodejs -y &>>${log_path}
 func_exit $?
 
@@ -60,6 +62,7 @@ print_head "library install"
 cd /app &>>${log_path}
 npm install &>>${log_path}
 func_exit $?
+
 
 print_head "install systemd"
 cp $script_path/${component}.systemd  /etc/systemd/system/${component}.service &>>${log_path}
