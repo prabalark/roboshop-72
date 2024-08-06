@@ -2,6 +2,16 @@ username=roboshop
 log_path=/tmp/roboshop.log
 rm -f ${log_path}
 
+func_exit(){
+  if [ $1 -eq 0 ]; then
+     echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
+  else
+     echo -e "\e[31m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
+     exit
+     echo -e "\e[31m >>>>>>>>>> refer the log file '/tmp/roboshop.log' <<<<<<<<<<<< \e[0m"
+  fi
+}
+
 print_head() {
   echo -e "\e[31m >>>>>>> $1 <<<<<<< \e[0m"
   echo -e "\e[31m >>>>>>> $1 <<<<<<< \e[0m" &>>${log_path}
@@ -51,17 +61,6 @@ schema_laod_nodejs(){
 
   echo -e "\e[32m >>>>>>> load schema <<<<<< \e[0m"
   mongo --host mongodb.devops72bat.online </app/schema/${component}.js
-  fi
-}
-
-
-func_exit(){
-  if [ $1 -eq 0 ]; then
-     echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
-  else
-     echo -e "\e[31m >>>>>>>>>> failure <<<<<<<<<<<< \e[0m"
-     exit
-     echo -e "\e[31m >>>>>>>>>> refer the log file '/tmp/roboshop.log' <<<<<<<<<<<< \e[0m"
   fi
 }
 
