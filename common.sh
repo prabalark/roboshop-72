@@ -67,24 +67,24 @@ schema_laod_nodejs(){
 # catalogue,user,cart
 func_nodejs(){
   # dnf module list -> to see all
-print_head "install nodejs"
-dnf module disable nodejs -y &>>${log_path}
-dnf module enable nodejs:18 -y &>>${log_path}
+  print_head "install nodejs"
+  dnf module disable nodejs -y &>>${log_path}
+  dnf module enable nodejs:18 -y &>>${log_path}
 
-dnf install nodejs -y &>>${log_path}
-func_exit $?
+  dnf install nodejs -y &>>${log_path}
+  func_exit $?
 
-func_prereq &>>${log_path} # in ansible also same
-func_exit $?
+  func_prereq &>>${log_path} # in ansible also same
+  func_exit $?
 
-print_head "library install"
-cd /app &>>${log_path}
-npm install &>>${log_path}
-func_exit $?
+  print_head "library install"
+  cd /app &>>${log_path}
+  npm install &>>${log_path}
+  func_exit $?
 
-func_systemd &>>${log_path}
-func_exit $?
+  func_systemd &>>${log_path}
+  func_exit $?
 
-schema_laod_nodejs &>>${log_path}
-func_exit $?
+  schema_laod_nodejs &>>${log_path}
+  func_exit $?
 }
