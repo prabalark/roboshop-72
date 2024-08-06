@@ -64,6 +64,7 @@ func_exit(){
   fi
 }
 
+# catalogue,user,cart
 func_nodejs(){
   # dnf module list -> to see all
 print_head "install nodejs"
