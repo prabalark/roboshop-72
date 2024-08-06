@@ -24,17 +24,10 @@ func_payment(){
   func_exit $?
 
   #roboshop123
-  print_head  "install systemd"
   sed -i -e "s|rabbitm1_lg_password2|${rabbitm1_lg_password}|" ${script_path}/${component}.systemd &>>${log_path}
-    # only if password in systemd we have to do sed
-  func_exit $?
-  cp ${script_path}/${component}.systemd  /etc/systemd/system/${component}.service &>>${log_path}
+  func_exit $?  # only if password in systemd we have to do sed
 
-  print_head  "start ${component} systemd"
-  systemctl daemon-reload  &>>${log_path}
-  func_exit $?
-  systemctl enable ${component} &>>${log_path}
-  systemctl restart ${component} &>>${log_path}
+  func_systemd &>>${log_path}
   func_exit $?
 }
 
