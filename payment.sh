@@ -3,12 +3,12 @@ script_path=$(dirname "$script")
 source ${script_path}/common.sh
 rabbitm1_lg_password=$1
 
+component=payment
+
 if [ -z "${rabbitm1_lg_password}" ]; then
   echo rabbitm1_lg_password is not given
   exit
 fi
-
-component=payment
 
 func_payment(){
   print_head  "install python"
