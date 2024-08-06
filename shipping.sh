@@ -22,25 +22,25 @@ fun_mysql(){
 }
 
 func_shipping(){
-print_head  "install maven" 
-dnf install maven -y &>>${log_path}
-func_exit $?
+  print_head  "install maven"
+  dnf install maven -y &>>${log_path}
+  func_exit $?
 
-func_prereq &>>${log_path} # in ansible also same
-func_exit $?
+  func_prereq &>>${log_path} # in ansible also same
+  func_exit $?
 
-print_head  "install library" 
-cd /app &>>${log_path}
-mvn clean package &>>${log_path}
-func_exit $?
-mv target/shipping-1.0.jar shipping.jar &>>${log_path}
-func_exit $?
+  print_head  "install library"
+  cd /app &>>${log_path}
+  mvn clean package &>>${log_path}
+  func_exit $?
+  mv target/shipping-1.0.jar shipping.jar &>>${log_path}
+  func_exit $?
 
-fun_mysql &>>${log_path}
-&>>${log_path}
+  func_systemd &>>${log_path}
+  func_exit $?
 
-func_systemd &>>${log_path}
-func_exit $?
+  fun_mysql &>>${log_path}
+  &>>${log_path}
 }
 
 func_shipping
