@@ -8,7 +8,7 @@ mysqlpassword=$1
     exit
  fi
 
-component_shp=shipping
+component=shipping
 
 func_shipping(){
 print_head  "install maven" 
@@ -27,13 +27,13 @@ func_exit $? # bcz re-run of code some time through error
 mkdir /app  &>>${log_path}
 func_exit $?
 
-print_head  "downlaod ${component_shp}" 
-curl -L -o /tmp/${component_shp}.zip https://roboshop-artifacts.s3.amazonaws.com/${component_shp}.zip &>>${log_path}
+print_head  "downlaod ${component}" 
+curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log_path}
 func_exit $?
 cd /app &>>${log_path}
 
-print_head  "unzip ${component_shp}" 
-unzip /tmp/${component_shp}.zip &>>${log_path}
+print_head  "unzip ${component}" 
+unzip /tmp/${component}.zip &>>${log_path}
 func_exit $?
 
 print_head  "install library" 
@@ -49,18 +49,10 @@ func_exit $?
 
 #RoboShop@1 --password as input
 print_head  "load schema mysql" 
-mysql -h mysql.devops72bat.online -uroot -p${mysqlpassword} < /app/schema/${component_shp}.sql &>>${log_path}
+mysql -h mysql.devops72bat.online -uroot -p${mysqlpassword} < /app/schema/${component}.sql &>>${log_path}
 func_exit $?
 
-print_head  "install systemd" 
-cp $script_path/${component_shp}.systemd /etc/systemd/system/${component_shp}.service &>>${log_path}
-func_exit $?
-
-print_head  "start mysql" 
-systemctl daemon-reload &>>${log_path}
-func_exit $?
-systemctl enable ${component_shp}  &>>${log_path}
-systemctl restart ${component_shp} &>>${log_path}
+func_systemd &>>${log_path}
 func_exit $?
 }
 
