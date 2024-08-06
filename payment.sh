@@ -25,7 +25,7 @@ func_payment(){
 
   #roboshop123
   sed -i -e "s|rabbitm1_lg_password2|${rabbitm1_lg_password}|" ${script_path}/${component}.systemd &>>${log_path}
-  func_exit $?  # only if password in systemd we have to do sed
+  func_exit $?   # only if password in systemd we have to do sed
 
   func_systemd &>>${log_path}
   func_exit $?
