@@ -17,7 +17,7 @@ func_exit(){
   fi
 }
 
-fun_prereq(){
+func_prereq(){
   print_head "create /app"
   id ${username} &>>${log_path}
   if [ $? -ne 0 ]; then
@@ -74,7 +74,7 @@ dnf module enable nodejs:18 -y &>>${log_path}
 dnf install nodejs -y &>>${log_path}
 func_exit $?
 
-fun_prereq &>>${log_path} # in ansible also same
+func_prereq &>>${log_path} # in ansible also same
 func_exit $?
 
 print_head "library install"
