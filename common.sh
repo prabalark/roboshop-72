@@ -15,6 +15,19 @@ mongo --host mongodb.devops72bat.online </app/schema/${component}.js
 fi
 }
 
+func_systemd(){
+print_head  "install systemd"
+cp $script_path/${component}.systemd /etc/systemd/system/${component}.service &>>${log_path}
+func_exit $?
+
+print_head  "start systemd"
+systemctl daemon-reload &>>${log_path}
+func_exit $?
+systemctl enable ${component}  &>>${log_path}
+systemctl restart ${component} &>>${log_path}
+func_exit $?
+}
+
 func_exit(){
   if [ $1 -eq 0 ]; then
      echo -e "\e[32m >>>>>>>>>> success <<<<<<<<<<<< \e[0m"
@@ -63,14 +76,7 @@ cd /app &>>${log_path}
 npm install &>>${log_path}
 func_exit $?
 
-
-print_head "install systemd"
-cp $script_path/${component}.systemd  /etc/systemd/system/${component}.service &>>${log_path}
-func_exit $?
-
-systemctl daemon-reload &>>${log_path}
-systemctl enable ${component} &>>${log_path}
-systemctl restart ${component} &>>${log_path}
+func_systemd &>>${log_path}
 func_exit $?
 
 schema_laod_nodejs &>>${log_path}
