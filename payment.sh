@@ -29,6 +29,8 @@ func_payment(){
 
   func_systemd &>>${log_path}
   func_exit $?
+
+  # no schema in payment.sh
 }
 
 func_payment
