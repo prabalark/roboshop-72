@@ -1,6 +1,6 @@
 script=$(realpath "$0")
 script_path=$(dirname "$script")
-source ${script_path}/common.sh
+source ${script_path}/common.sh  # source will get funtion & variable from common.sh
 rabbitm1_lg_password=$1
 
 component=payment
