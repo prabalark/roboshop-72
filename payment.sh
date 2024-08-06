@@ -41,6 +41,7 @@ func_exit $?
 #roboshop123
 print_head  "install systemd"   
 sed -i -e "s|rabbitm1_lg_password2|${rabbitm1_lg_password}|" ${script_path}/${component_pay}.systemd &>>${log_path}
+  # only if password in systemd we have to do sed
 func_exit $?
 cp ${script_path}/${component_pay}.systemd  /etc/systemd/system/${component_pay}.service &>>${log_path}
 
